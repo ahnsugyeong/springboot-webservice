@@ -40,7 +40,9 @@ public class HelloControllerTest {
         String name = "hello";
         int amount = 1000;
 
-        mvc.perform(get("/hello/dto").param("name", name).param("amount", String.valueOf(amount)))  //API 테스트할 때 사용될 요청 파라미터 설정. 값은 String만 허용. 숫자/날짜도 문자열로 변경해야함
+        mvc.perform(get("/hello/dto")
+                        .param("name", name)
+                        .param("amount", String.valueOf(amount)))  //API 테스트할 때 사용될 요청 파라미터 설정. 값은 String만 허용. 숫자/날짜도 문자열로 변경해야함
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name", is(name)))
                 .andExpect(jsonPath("$.amount", is(amount)));   //jsonPath -> JSON 응답값을 필드별로 검증할 수 있는 메소드. $를 기준으로 필드명을 명시. 여기에선 name과 amount 검증
