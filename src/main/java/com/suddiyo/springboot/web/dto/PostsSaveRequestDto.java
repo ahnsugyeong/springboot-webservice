@@ -6,6 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 /*
+DTO(Data Transfer Object)는 데이터 전송(이동) 객체라는 의미를 가지고 있다.
+DB의 데이터를 Service나 Controller 등으로 보낼 때 사용하는 객체
+
+
 Entity 클래스와 거의 유사한 형태지만,
 "절대로 Entity 클래스를 Request/Response 클래스로 사용해서는 안 된다"
 why? Entity 클래스 -> 데이터베이스와 맞닿은 핵심 클래스.

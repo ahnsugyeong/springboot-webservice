@@ -13,10 +13,9 @@ import javax.persistence.*;
 @NoArgsConstructor  //기본 생성자 자동 추가 -> public Posts(){}
 @Entity //JPA의 어노테이션. 더 중요하니까 가까이 둔 것.
 //Posts 클래스 - 실제 DB의 테이블과 매칭될 클래스. = Entity클래스
-public class Posts {
+public class Posts extends BaseTimeEntity{
     @Id //해당 테이블의 PK필드를 나타냄
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //PK의 생성 규칙을 나타냄. GenerationType.IDENTITY 옵션을 추가해야 auto_increment가 됨.
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //PK의 생성 규칙을 나타냄. GenerationType.IDENTITY 옵션을 추가해야 auto_increment가 됨.
     private Long id;    //Long 추천!
 
     //테이블의 칼럼을 나타냄. 굳이 선언 안 해도 해당 클래스의 필드는 모두 칼럼. 변경이 필요한 옵션이 있을 경우 사용
@@ -34,5 +33,10 @@ public class Posts {
         this.title = title;
         this.content = content;
         this.author = author;
+    }
+
+    public void update(String title, String content){
+        this.title = title;
+        this.content = content;
     }
 }
